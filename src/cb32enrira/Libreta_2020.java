@@ -10,12 +10,15 @@ package cb32enrira;
  * @author enriq
  */
 public class Libreta_2020 extends Libreta_ahorro {
-    private double interes = 0.08;
+    private double interes = 0.8;
     private double penalizacion = 0.02;
     
         public Libreta_2020 (){
         super ();
-    }    
+    }  
+        public double getIntereses (){
+            return (this.interes * 100);
+        }        
         public int retirarFon (double retirar){
             if (super.retirarFon(retirar + (retirar * this.penalizacion)) == 0){            
                 return 0;

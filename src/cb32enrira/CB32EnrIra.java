@@ -23,7 +23,7 @@ public class CB32EnrIra {
         
         cc1.hacerDep(220);
         l1.hacerDep(400);
-        la1.hacerDep(20);
+        la1.hacerDep(400);
         
         System.out.println (cc1.estadoCuenta());
         System.out.println (l1.estadoCuenta());
@@ -45,7 +45,7 @@ public class CB32EnrIra {
         else
             System.out.println ("Operación realizada con éxito");        
 
-        if (la1.retirarFon(20) == -1)
+        if (la1.retirarFon(400) == -1)
             System.out.println ("Has retirado más de lo que tiene la cuenta, error");        
         else
             System.out.println ("Operación realizada con éxito");   
@@ -54,8 +54,6 @@ public class CB32EnrIra {
         System.out.println (l1.estadoCuenta());
         System.out.println (la1.estadoCuenta());
         
-        l1.setIntereses(0.45);
-        la1.setIntereses(0.6);
         l1.actualizaIntereses();
         la1.actualizaIntereses();
         System.out.println ("Los intereses de la libreta 2020 han cambiado,tu saldo actual es: " +l1.getSaldo()+ " €");
