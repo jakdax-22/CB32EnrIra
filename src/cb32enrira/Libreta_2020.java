@@ -17,14 +17,10 @@ public class Libreta_2020 extends Libreta_ahorro {
         super ();
     }    
         public int retirarFon (double retirar){
-            if (this.saldo < retirar){
-                return -1;
-            }
-            else{
-                super.retirarFon(retirar);
+            if (super.retirarFon(retirar + (retirar * this.penalizacion)) == 0){            
                 return 0;
             }
-           
+                return -1;          
         }
         
 }

@@ -21,4 +21,10 @@ public class Libreta_ahorro extends Cuenta {
         public double getIntereses (){
             return (this.interes * 100);
         }
+        public void setIntereses(double interes) {
+            this.interes = interes;
+        }
+        public void actualizaIntereses (){
+            setSaldo(getSaldo() + ((getIntereses() / 100) * getSaldo()));
+        }
 }

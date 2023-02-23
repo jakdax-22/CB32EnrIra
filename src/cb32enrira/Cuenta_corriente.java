@@ -17,7 +17,7 @@ public class Cuenta_corriente extends Cuenta {
     }
     public int pagar(double retirar){
         if (retirar > this.saldo){
-            if ((this.saldo * -1) > la1.getSaldo()){
+            if (retirar > (la1.getSaldo() + this.saldo)){
                 return -1;                
             }
             else{

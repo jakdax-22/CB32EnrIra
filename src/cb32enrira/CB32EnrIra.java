@@ -20,15 +20,27 @@ public class CB32EnrIra {
         System.out.println (cc1.estadoCuenta());
         System.out.println (l1.estadoCuenta());
         System.out.println (la1.estadoCuenta());
+        
+        cc1.hacerDep(220);
+        l1.hacerDep(400);
+        la1.hacerDep(20);
+        
+        System.out.println (cc1.estadoCuenta());
+        System.out.println (l1.estadoCuenta());
+        System.out.println (la1.estadoCuenta());        
 
-        if (cc1.pagar(220) == -1)
-            System.out.println ("Has retirado más de lo que tiene la cuenta y la libreta, error");        
-        else if (cc1.pagar(220) == -2)
-            System.out.println ("Operación realizada con éxito, pero quitando de la libreta");
-        else
-            System.out.println ("Operación realizada con éxito");        
-
-        if (l1.retirarFon(799) == -1)
+        switch  (cc1.pagar(220)){
+            case -1:
+                System.out.println ("Has retirado más de lo que tiene la cuenta y la libreta, error");                        
+            break;
+            
+            case -2:
+                System.out.println ("Operación realizada con éxito, pero quitando de la libreta");
+            break;
+            default:
+                System.out.println ("Operación realizada con éxito");        
+        }
+        if (l1.retirarFon(400) == -1)
             System.out.println ("Has retirado más de lo que tiene la cuenta, error");        
         else
             System.out.println ("Operación realizada con éxito");        
@@ -42,8 +54,12 @@ public class CB32EnrIra {
         System.out.println (l1.estadoCuenta());
         System.out.println (la1.estadoCuenta());
         
-        l1.actualizaIntereses(0.45);
-        System.out.println (l1.getIntereses());
+        l1.setIntereses(0.45);
+        la1.setIntereses(0.6);
+        l1.actualizaIntereses();
+        la1.actualizaIntereses();
+        System.out.println ("Los intereses de la libreta 2020 han cambiado,tu saldo actual es: " +l1.getSaldo()+ " €");
+        System.out.println ("Los intereses de la libreta de ahorros han cambiado,tu saldo actual es: " +la1.getSaldo()+ " €");        
         
         double retirar;
         Scanner teclado = new Scanner (System.in);
@@ -51,17 +67,20 @@ public class CB32EnrIra {
         System.out.println ("Dime la cantidad de dinero a retirar de la cuenta corriente");
         retirar = teclado.nextDouble();
         
-        if (cc1.pagar(retirar) == -1)
-            System.out.println ("Has retirado más de lo que tiene la cuenta y la libreta, error");        
-        else if (cc1.pagar(retirar) == -2){
-            System.out.println ("Operación realizada con éxito, pero quitando de la libreta");
-            System.out.println(cc1.estadoCuenta());
-            System.out.println(cc1.estadoCuenta());
-         }
-        else{
-            System.out.println ("Operación realizada con éxito");      
-        System.out.println (la1.estadoCuenta());
-        System.out.println (cc1.estadoCuenta());
+        switch  (cc1.pagar(retirar)){
+            case -1:
+                System.out.println ("Has retirado más de lo que tiene la cuenta y la libreta, error");                        
+            break;
+            
+            case -2:
+                System.out.println ("Operación realizada con éxito, pero quitando de la libreta");
+                System.out.println (cc1.estadoCuenta());
+                System.out.println (la1.estadoCuenta());                
+            break;
+            default:
+                System.out.println ("Operación realizada con éxito"); 
+                System.out.println (cc1.estadoCuenta());
+                System.out.println (la1.estadoCuenta());                
         }
         
     }
